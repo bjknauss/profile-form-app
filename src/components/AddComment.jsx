@@ -1,8 +1,8 @@
 import React from 'react'
 
 export default class AddComment extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       value: ''
     }
@@ -23,10 +23,11 @@ export default class AddComment extends React.Component {
     }
 
     return (
-      <div>
-        <h4>Add Comment</h4>
-        <input type="text" value={value} onChange={this.onChange} />
-        <button type="button" onClick={onClick} >
+      <div className="input-group">
+        <label className="col-form-label">Add Comment</label>
+        <input type="text" value={value} 
+            onChange={this.onChange} className="form-control" />
+        <button type="button" onClick={onClick} className="btn btn-primary" >
           Add
         </button>
       </div>

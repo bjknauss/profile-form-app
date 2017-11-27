@@ -6,24 +6,30 @@ import AddComment from './AddComment'
 import EditComment from './EditComment'
 import { addComment, removeComment, editComment } from '../reducers/comments'
 
-let EditCommentList = ({ comments, deleteComment, editComment, addComment }) => (
-  <ul>
+let EditCommentList = ({ comments, deleteComment, editComment, addComment, user }) => (
+  <div>
     {
-      comments.map((comment, index) => (
-        <EditComment key={index} text={comment} 
-            deleteComment={() => deleteComment(index)}
-            commentChange={(event) => editComment(index, event.target.value)} />
+      comments.map((comment) => (
+        <EditComment key={comment.id}
+              text={comment.text}
+              deleteComment={() => deleteComment(comment.id)}
+              editComment={(event) => editComment({
+                ...comment,
+                text: event.target.value
+              })} />
       ))
     }
+    <hr />
+    <AddComment add={(text) => addComment(user, text)} />
 
-    <AddComment add={addComment} />
-
-  </ul>
+  </div>
 )
 
 const mapStateToProps = state => {
+  let comments = state.comments.filter(c => c.userId === state.selectedUser)
   return {
-    comments: state.comments
+    user: state.selectedUser,
+    comments
   };
 }
 
@@ -35,9 +41,12 @@ const mapDispatchToProps = dispatch => ({
   deleteComment: (index) => {
     dispatch(removeComment(index))
   },
-  addComment: (text) => {
-    console.log('edit adding')
-    dispatch(addComment(text))
+  addComment: (user, text) => {
+    let c = {
+      userId: user,
+      text
+    }
+    dispatch(addComment(c))
   }
 })
 

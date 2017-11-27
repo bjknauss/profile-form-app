@@ -4,6 +4,7 @@ import { push } from 'react-router-redux'
 import { setUser, removeUser } from '../reducers/users'
 
 import EditUserForm from '../components/EditUserForm'
+import EditCommentList from '../components/EditCommentList'
 
 const mapStateToProps = state => {
   let selectedUserId = state.selectedUser
@@ -27,6 +28,8 @@ let EditProfile = ({user, setUser, removeUser}) => {
             removeUser(user.id)
             push('/')
           }}/>
+      <hr />
+      <EditCommentList />
     </div>
   )
 }

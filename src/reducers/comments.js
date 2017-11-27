@@ -19,8 +19,11 @@ const reducer = (state = initialComments, action) => {
 
     case EDIT_COMMENT:
       return state.map((comment) => {
-        if(action.id === comment.id){
-          return action.comment
+        if(action.comment.id === comment.id){
+          return {
+            ...comment,
+            ...action.comment
+          }
         }
         return comment
       })
@@ -37,17 +40,16 @@ export function addComment(comment){
   }
 }
 
-export function removeComment(index){
+export function removeComment(id){
   return {
     type: REMOVE_COMMENT,
-    index
+    id
   }
 }
 
-export function editComment(index, comment){
+export function editComment(comment){
   return {
     type: EDIT_COMMENT,
-    index,
     comment
   }
 }
