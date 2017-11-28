@@ -1,10 +1,14 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import EditProfile from './EditProfile'
+import NoUserSelected from '../components/NoUserSelected'
 
 const Main = () => (
   <div>
-    <Route path="/user/:id" component={EditProfile} />
+    <Switch>
+      <Route path="/" exact={true} component={NoUserSelected} />
+      <Route path="/user/:id" component={EditProfile} />
+    </Switch>
   </div>
 )
 

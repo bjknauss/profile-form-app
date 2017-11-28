@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { setUser, removeUser } from '../reducers/users'
+import { selectUser } from '../reducers/selectedUser'
 
 import EditUserForm from '../components/EditUserForm'
 import EditCommentList from '../components/EditCommentList'
 
 const mapStateToProps = state => {
-  let selectedUserId = state.selectedUser
   let selectedUser = state.users.find((value) => value.id === state.selectedUser)
   return {
     selectedUser: state.selectedUser,
@@ -15,28 +15,60 @@ const mapStateToProps = state => {
   }
 }
 
-let EditProfile = ({user, setUser, removeUser}) => {
-  if(user === undefined){
-    return <h1>Select User</h1>
+class EditProfile extends React.Component {
+
+  componentWillReceiveProps(nextProps){
+    let { match, selectedUser, selectUser } = nextProps
+    if(match.params.id !== selectedUser){
+      selectUser(match.params.id)
+    }
   }
 
-  return (
-    <div className="edit-profile">
-      <EditUserForm user={user} 
-          onSet={(user) => setUser(user)}  
-          onRemove={(user) => {
-            removeUser(user.id)
-            push('/')
-          }}/>
-      <hr />
-      <EditCommentList />
-    </div>
-  )
+  componentWillMount() {
+    let { match, selectedUser, selectUser } = this.props
+    console.log('mount', match.params.id)
+    if(match.params.id !== selectedUser){
+      selectUser(match.params.id)
+    }
+  }
+
+
+  render() {
+    
+
+    let { 
+      user, selectedUser,
+      setUser, removeUser, selectUser,
+      push, match
+    } = this.props
+
+    if(!user){
+      return <h1>Select User</h1>
+    }
+  
+    return (
+      <div className="edit-profile">
+        <EditUserForm user={user} 
+            onSet={(user) => setUser(user)}  
+            onRemove={(user) => {
+              removeUser(user.id)
+              push('/')
+            }}/>
+        <hr />
+        <EditCommentList />
+      </div>
+    )
+  }
 }
+
+// let EditProfile = ({ user, setUser, removeUser, match, push, selectedUser, selectUser }) => {
+  
+
+// }
 
 EditProfile = connect(
   mapStateToProps,
-  { setUser, removeUser, push }
+  { setUser, removeUser, push, selectUser }
 )(EditProfile)
 
 export default EditProfile

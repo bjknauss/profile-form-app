@@ -4,10 +4,10 @@ import { matchPath } from 'react-router'
 
 import { selectUser } from '../reducers/selectedUser'
 
-// const pingEpic = action$ =>
-//   action$.ofType('PING')
-//     .delay(3000)
-//     .mapTo({type: 'PONG'})
+const pingEpic = action$ =>
+  action$.ofType('PING')
+    .delay(3000)
+    .mapTo({type: 'PONG'})
 
 
 const selectUserEpic = action$ => {
@@ -34,4 +34,4 @@ const selectUserEpic = action$ => {
       return selectUser(action.match.params.id)
     })
   }
-export default selectUserEpic
+export default pingEpic
