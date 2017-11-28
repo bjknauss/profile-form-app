@@ -6,6 +6,8 @@ import SelectField from '../components/SelectField'
 import validators from '../validators'
 import { addUser } from '../reducers/users'
 import Field from './Field'
+import ErrorMessage from './ErrorMessage'
+import SuccessMessage from './SuccessMessage'
 
 const mapDispatchToProps = dispatch => ({
   addUser: (user) => {
@@ -119,20 +121,11 @@ class AddUser extends React.Component {
   render() {
     let { user, errors, validForm, touched, _error, _message } = this.state
 
-    let errorMessage, formMessage
-
-    if(_error){
-      errorMessage = <div className="alert alert-danger">{_error}</div>
-    }
-    if(_message){
-      formMessage = <div className="alert alert-success">{_message}</div>
-    }
-
     return (
       <form className="new-user" onSubmit={this.onSubmit} >
         <h4>New User</h4>
-        { _message }
-        { _error }
+        <SuccessMessage message={_message} />
+        <ErrorMessage message={_error} />
         <Field name="username" type="text"
           value={user.username}
           error={errors.username} 
