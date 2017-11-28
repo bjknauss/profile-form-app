@@ -1,11 +1,13 @@
 import React from 'react'
 import { Route } from 'react-router'
 import UserNavList from './UserNavList'
+import AddUserButton from '../components/AddUserButton'
 
 
 const Sidebar = (props) => (
   <div>
-    <h3>This is the sidebar</h3>
+    <AddUserButton />
+    <hr />
     <UserNavList />
   </div>
 )

@@ -6,13 +6,16 @@ export default class Field extends React.Component {
   render(){
     let {
       name, type, value,
-      label, placeholder,
+      label, placeholder, touched,
       onChange, onBlur, error
     } = this.props
     label = label || name
+    if(touched === undefined){
+      touched = true
+    }
 
     let errorMessage
-    if(error){
+    if(error && touched){
       errorMessage = <div className="alert alert-danger">{error}</div>
     }
 

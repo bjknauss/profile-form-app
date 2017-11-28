@@ -25,7 +25,7 @@ export default class EditUserForm extends React.Component {
     }
     for(let key in user){
       state.dirty[key] = false
-      state.errors[key] = false
+      state.errors[key] = ''
     }
     return state
   }
@@ -53,7 +53,7 @@ export default class EditUserForm extends React.Component {
       [name]: errMsg
     }
     let clean = Object.values(dirty).every((dirt) => !dirt)
-    let valid = Object.values(errors).every(e => e === false)
+    let valid = Object.values(errors).every(e => e === '')
 
     this.setState({
       user: {

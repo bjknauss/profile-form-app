@@ -7,7 +7,7 @@ const validators = (name, value) => {
   if(name === 'age'){
     return ageValidator(value)
   }
-  return false
+  return ''
 }
 
 const usernameValidator = (value) => {
@@ -17,7 +17,7 @@ const usernameValidator = (value) => {
   if(value.indexOf(' ') >= 0){
     return 'Username must not contain spaces.'
   }
-  return false
+  return ''
 }
 
 const ageValidator = (value) => {
@@ -31,7 +31,7 @@ const ageValidator = (value) => {
   if (age > 100){
     return 'You are too old...'
   }
-  return false
+  return ''
 }
 
 export default validators
