@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import EditProfile from './EditProfile'
-import NoUserSelected from '../components/NoUserSelected'
-import AddUser from '../components/AddUser'
+import NoUserSelected from '../users/NoUserSelected'
+import AddUser from '../users/AddUser'
 
 const Main = () => (
   <div>

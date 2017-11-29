@@ -5,9 +5,9 @@ import { push } from 'react-router-redux'
 import SelectField from '../components/SelectField'
 import validators from '../validators'
 import { addUser } from '../reducers/users'
-import Field from './Field'
-import ErrorMessage from './ErrorMessage'
-import SuccessMessage from './SuccessMessage'
+import Field from '../components/Field'
+import ErrorMessage from '../messages/ErrorMessage'
+import SuccessMessage from '../messages/SuccessMessage'
 
 const mapDispatchToProps = dispatch => ({
   addUser: (user) => {

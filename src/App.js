@@ -1,26 +1,37 @@
 import React, { Component } from 'react';
 
+import { applyMiddleware, createStore, compose } from 'redux'
+import { Provider } from 'react-redux'
+
+// Middleware-related
+import { createEpicMiddleware } from 'redux-observable'
+import createHistory from 'history/createBrowserHistory'
+import logger from 'redux-logger'
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
+
+import reducer from './reducers'
+import pingEpic from './epics'
 import Layout from './containers/Layout'
 
-// import CommentList from './components/CommentList'
-// import EditCommentList from './components/EditCommentList'
-// import Test from './components/Test'
-// import TestForm from './components/TestForm'
+
+const epicMiddleware = createEpicMiddleware(pingEpic)
+const history = createHistory()
+const routeMiddleware = routerMiddleware(history)
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducer, composeEnhancers(applyMiddleware(logger, epicMiddleware, routeMiddleware)))
+window.dispatch = store.dispatch;
 
 class App extends Component {
   render() {
-          // <div className="App">
-      //   <CommentList />
-      //   <hr />
-      //   <EditCommentList />
-      //   <hr />
-      //   <Test placeholder="test" required="true" />
-      //   <hr />
-      //   <TestForm />
-      // </div>
     return (
-      <Layout />
-    );
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <Layout />
+        </ConnectedRouter>
+    </Provider>
+    )
   }
 }
 

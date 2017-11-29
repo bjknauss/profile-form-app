@@ -1,9 +1,8 @@
 import React from 'react'
 
-import Field from './Field'
-import SelectField from './SelectField'
+import Field from '../components/Field'
+import SelectField from '../components/SelectField'
 import validators from '../validators'
-
 
 export default class EditUserForm extends React.Component {
   constructor(props){

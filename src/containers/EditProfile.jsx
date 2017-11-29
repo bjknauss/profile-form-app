@@ -4,7 +4,7 @@ import { push } from 'react-router-redux'
 import { setUser, removeUser } from '../reducers/users'
 import { selectUser } from '../reducers/selectedUser'
 
-import EditUserForm from '../components/EditUserForm'
+import EditUserForm from '../users/EditUserForm'
 import EditCommentList from '../components/EditCommentList'
 
 const mapStateToProps = state => {

@@ -7,7 +7,6 @@ const REMOVE_USER = 'REMOVE_USER'
 
 
 let reducer = (state = initialUsers, action) => {
-  console.log('check')
   switch (action.type){
     case SET_USER:
       return state.map((user) => {

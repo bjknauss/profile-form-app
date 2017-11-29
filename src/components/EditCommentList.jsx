@@ -35,7 +35,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   editComment: (index, text) => {
-    console.log(index, text)
     dispatch(editComment(index, text))
   },
   deleteComment: (index) => {
