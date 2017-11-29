@@ -69,15 +69,12 @@ export default class EditUserForm extends React.Component {
 
   onSubmit = (event) => {
     let user = this.state.user
-    // let msg = `User[${user.username}] - Age[${user.age}], Status[${user.status}]`;
-    // alert(msg)
     this.props.onSet(user)
     this.setState(this.setState(user))
     event.preventDefault()
   }
 
   render(){
-    // let { user, dirty } = this.state
     return (
       <form className="userform" onSubmit={this.onSubmit}>
         <h4>Id: { this.state.user.id }</h4>

@@ -18,7 +18,6 @@ const routeMiddleware = routerMiddleware(history)
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
-// const store = createStore(reducer, composeEnhancers(applyMiddleware(logger, epicMiddleware, routerMiddleware)))
 const store = createStore(reducer, composeEnhancers(applyMiddleware(logger, epicMiddleware, routeMiddleware)))
 window.dispatch = store.dispatch;
 

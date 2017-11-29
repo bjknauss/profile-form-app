@@ -3,7 +3,6 @@ import { routerReducer } from 'react-router-redux'
 
 import commentReducer from './comments'
 import userReducer from './users'
-import testReducer from './test'
 import selectedUserReducer from './selectedUser'
 
 const reducer = combineReducers({

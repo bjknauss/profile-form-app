@@ -6,8 +6,8 @@ export default class SelectField extends React.Component {
   render(){
     let {
       name, value, options,
-      label,
-      onChange, onBlur, error
+      label, error,
+      onChange
     } = this.props
     label = label || name
 

@@ -32,13 +32,10 @@ class EditProfile extends React.Component {
     }
   }
 
-
   render() {
-    
-
     let { 
-      user, selectedUser,
-      setUser, removeUser, selectUser,
+      user,
+      setUser, removeUser,
       push, match
     } = this.props
 
@@ -60,11 +57,6 @@ class EditProfile extends React.Component {
     )
   }
 }
-
-// let EditProfile = ({ user, setUser, removeUser, match, push, selectedUser, selectUser }) => {
-  
-
-// }
 
 EditProfile = connect(
   mapStateToProps,

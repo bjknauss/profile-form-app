@@ -21,7 +21,7 @@ const usernameValidator = (value) => {
 }
 
 const ageValidator = (value) => {
-  let age = Number.parseInt(value)
+  let age = Number.parseInt(value, 10)
   if(!Number.isFinite(age)){
     return 'Please enter a valid age.'
   }

@@ -119,7 +119,7 @@ class AddUser extends React.Component {
   }
 
   render() {
-    let { user, errors, validForm, touched, _error, _message } = this.state
+    let { user, errors, touched, _error, _message } = this.state
 
     return (
       <form className="new-user" onSubmit={this.onSubmit} >

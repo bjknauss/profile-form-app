@@ -4,7 +4,7 @@ import Main from './Main'
 import Sidebar from './Sidebar'
 
 const Layout = () => (
-  <div className="container">
+  <div className="container" style={{ margin: '30px 20px' }}>
     <div className="row">
       <div className="sidebar col-sm-3">
         <Sidebar />
