@@ -4,7 +4,7 @@ import { push } from 'react-router-redux'
 
 import SelectField from '../components/SelectField'
 import validators from '../validators'
-import { addUser } from '../reducers/users'
+import { addUser } from '../redux/users'
 import Field from '../components/Field'
 import ErrorMessage from '../messages/ErrorMessage'
 import SuccessMessage from '../messages/SuccessMessage'

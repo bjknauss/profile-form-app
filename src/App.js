@@ -9,9 +9,10 @@ import createHistory from 'history/createBrowserHistory'
 import logger from 'redux-logger'
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 
-import reducer from './reducers'
+import reducer from './redux'
 import pingEpic from './epics'
 import Layout from './containers/Layout'
+import { getAll } from './redux/author'
 
 
 const epicMiddleware = createEpicMiddleware(pingEpic)
@@ -34,5 +35,7 @@ class App extends Component {
     )
   }
 }
+
+store.dispatch(getAll())
 
 export default App;

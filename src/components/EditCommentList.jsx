@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import AddComment from './AddComment'
 import EditComment from './EditComment'
-import { addComment, removeComment, editComment } from '../reducers/comments'
+import { addComment, removeComment, editComment } from '../redux/comments'
 
 let EditCommentList = ({ comments, deleteComment, editComment, addComment, user }) => (
   <div>

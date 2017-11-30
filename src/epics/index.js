@@ -1,3 +1,8 @@
-import selectUserEpic from './location'
+import { combineEpics } from 'redux-observable'
 
-export default selectUserEpic
+import selectUserEpic from './location'
+import { getAllEpic, submitAuthorEpic, submitAuthorDoneEpic } from './author'
+
+const rootEpic = combineEpics(getAllEpic, submitAuthorEpic, submitAuthorDoneEpic)
+
+export default rootEpic

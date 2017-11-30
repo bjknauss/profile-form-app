@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import { setUser, removeUser } from '../reducers/users'
-import { selectUser } from '../reducers/selectedUser'
+import { setUser, removeUser } from '../redux/users'
+import { selectUser } from '../redux/selectedUser'
 
 import EditUserForm from '../users/EditUserForm'
 import EditCommentList from '../components/EditCommentList'

@@ -3,7 +3,6 @@ const SELECT_USER = 'SELECT_USER'
 
 // Reducer
 let reducer = (state = '', action) => {
-  console.log("SELECTED USER REDUCER")
   switch(action.type){
     case SELECT_USER:
       return action.userId
