@@ -50,6 +50,7 @@ export const submitAuthorDone = payload => ({
 })
 
 const reducer = (state = initialState, {type, payload}) => {
+  let authors
   switch(type){
     case FETCH_AUTHOR:
       return {
@@ -58,7 +59,7 @@ const reducer = (state = initialState, {type, payload}) => {
       }
 
     case FETCH_AUTHOR_DONE:
-      let authors = { ...state.authors }
+      authors = { ...state.authors }
       authors[payload.id] = payload
       return {
         ...state,
@@ -78,10 +79,14 @@ const reducer = (state = initialState, {type, payload}) => {
         fetching: true
       }
   case GET_ALL_DONE:
+      authors = {}
+      payload.forEach(a => {
+        authors[a.id] = a
+      });
       return {
         ...state,
         fetching: false,
-        authors: payload
+        authors
       }
   case SUBMIT_AUTHOR:
       return {
