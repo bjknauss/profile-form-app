@@ -36,7 +36,7 @@ class EditProfile extends React.Component {
     let { 
       user,
       setUser, removeUser,
-      push, match
+      push
     } = this.props
 
     if(!user){

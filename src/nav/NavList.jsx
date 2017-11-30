@@ -3,9 +3,9 @@ import NavItem from './NavItem'
 
 const NavList = ({items}) => {
   let itemNavs = items.map((i) => {
-    let { to, value, id, ...others } = i
+    let { to, value, id } = i
     return (
-      <NavItem to={to} key={id} value={value} others />
+      <NavItem to={to} key={id} value={value} />
     )
   })
   return (

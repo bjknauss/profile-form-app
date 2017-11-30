@@ -14,6 +14,8 @@ const validateName = (errors = {}, name, key = 'firstName') => {
     errors[key] = 'Required'
   }else if ( name.length > 15 ){
     errors[key] = 'Must be less than 15 characters'
+  } else if ( name.length > 2 ) {
+    errors[key] = 'Must be more than 2 characters long'
   }else if ( name.indexOf(' ') >= 0){
     errors[key] = 'Must not contain spaces'
   }

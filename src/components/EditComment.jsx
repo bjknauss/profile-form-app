@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const EditComment = ({ commentChange, text, commentDelete }) => (
   <div className="input-group">

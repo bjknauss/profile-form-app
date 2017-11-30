@@ -7,7 +7,7 @@ import validators from './validators'
 
 const mapStateToProps = state => {
   return {
-    selectedAuthor: state.author.selected
+    selectedAuthorId: state.author.selected
   }
 }
 
@@ -15,27 +15,63 @@ const mapDispatchToProps = dispatch => {
   return {
     selectAuthor: (id) => dispatch(selectAuthor(id)),
     handleSubmit: (values) => {
-        console.log("mapDispatch: ", values)
         dispatch(submitAuthor(values))
       }
   }
 }
 
-let EditAuthorPage = ({ selectedAuthor, selectAuthor, handleSubmit, match: { params } }) => {
-  let authorId = params.id
-  if( selectedAuthor !== authorId ){
-    selectAuthor(authorId)
-    return <div>Invalid Author Selected...</div>
+class EditAuthorPage extends React.Component {
+  componentWillMount(){
+    const { 
+      selectedAuthorId, selectAuthor, 
+      match: { params } 
+    } = this.props
+    if( selectedAuthorId !== params.id ){
+      selectAuthor(params.id)
+    } 
+  }
+  componentWillReceiveProps(nextProps){
+    const { 
+      selectedAuthorId, selectAuthor, 
+      match: { params } 
+    } = nextProps
+    if( selectedAuthorId !== params.id ){
+      selectAuthor(params.id)
+    } 
   }
 
-  return (
-    <div>
-      <h2>Edit Author</h2>
-      <ConnectedAuthorForm validate={validators} onSubmit={handleSubmit} />
-    </div>
-  )
-
+  render(){
+    let { selectedAuthorId, handleSubmit } = this.props
+    if(!selectedAuthorId){
+      return <div>Invalid Author Selected...</div>
+    }
+  
+    return (
+      <div>
+        <h2>Edit Author</h2>
+        <ConnectedAuthorForm enableReinitialize={true} validate={validators} onSubmit={handleSubmit} />
+      </div>
+    )
+  }
 }
+
+
+
+// let EditAuthorPage = ({ selectedAuthorId, selectAuthor, handleSubmit, match: { params } }) => {
+//   let authorId = params.id
+//   if( selectedAuthorId !== authorId ){
+//     selectAuthor(authorId)
+//     return <div>Invalid Author Selected...</div>
+//   }
+
+//   return (
+//     <div>
+//       <h2>Edit Author</h2>
+//       <ConnectedAuthorForm validate={validators} onSubmit={handleSubmit} />
+//     </div>
+//   )
+
+// }
 
 EditAuthorPage = connect(
   mapStateToProps,
