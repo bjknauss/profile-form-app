@@ -5,7 +5,7 @@ const defaultClassNames = {
   'form-group': true
 }
 
-const InputGroup = ({className, children, ...others}) => (
+const FormGroup = ({className, children, ...others}) => (
   <div 
     className={ classNames(defaultClassNames, className) }
     {...others}
@@ -14,4 +14,4 @@ const InputGroup = ({className, children, ...others}) => (
   </div>
 )
 
-export default InputGroup
+export default FormGroup

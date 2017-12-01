@@ -19,7 +19,7 @@ let AuthorForm = ({ handleSubmit, pristine, reset, invalid, initialValues, submi
     <Field name="id"
       type="hidden"
       component="input" />
-
+    <hr />
     <FieldArray name="books" authorId={ initialValues && initialValues.id || '' } component={BookList} />
 
     <div>
@@ -28,12 +28,11 @@ let AuthorForm = ({ handleSubmit, pristine, reset, invalid, initialValues, submi
         disabled={ pristine || submitting || invalid }
       >Submit</button>
 
-      
       <button type="button"
         className="btn btn-danger"
         disabled={ pristine || submitting }
         onClick={reset} >
-        Clear All
+        Reset
       </button>
     </div>
   </form>

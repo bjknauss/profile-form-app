@@ -24,6 +24,14 @@ export const submitAuthorEpic = actions$ =>
             .map(response => submitAuthorDone(response))
       )
 
+// export const submitNewAuthorEpic = actions$ => 
+//   actions$.ofType(SUBMIT_AUTHOR_NEW)
+//     .mergeMap(action => 
+//       ajax.put(`${authorsUrl}/${action.payload.id}`, 
+//         JSON.stringify(action.payload), ajaxHeaders)
+//           .map(response => submitAuthorDone(response))
+//         )
+
 export const submitAuthorDoneEpic = actions$ =>
     actions$.ofType(SUBMIT_AUTHOR_DONE)
       .map(action => getAll())

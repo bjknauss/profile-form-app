@@ -2,14 +2,11 @@ import React from 'react'
 import classNames from 'classnames'
 
 import Label from './Label'
+import FormGroup from './FormGroup'
 import ErrorMessage from '../messages/ErrorMessage'
 
-const defaultClassNames = {
-  'form-group': true
-}
-
 const GroupedField = ({className, InputComponent, label, meta: { touched, error }, ...others}) => (
-  <div className={classNames(defaultClassNames, className)}>
+  <FormGroup className={className}>
     <Label>{label}</Label>
     <InputComponent
       {...others}
@@ -18,7 +15,7 @@ const GroupedField = ({className, InputComponent, label, meta: { touched, error 
       touched && error &&
       <ErrorMessage message={error} />
     }
-  </div>
+  </FormGroup>
 )
 
 export default GroupedField

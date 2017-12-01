@@ -5,12 +5,10 @@ const defaultClasses = {
   btn: true
 }
 
-const Button = ({ type, disabled, onClick, children, className = 'btn-primary', ...others }) => (
+const Button = ({ type = "button", children, className = 'btn-primary', ...others }) => (
   <button 
     {...others}
     type={type}
-    disabled={disabled}
-    onClick={onClick}
     className={classnames(defaultClasses, className)}
   >
     {children}
