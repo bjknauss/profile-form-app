@@ -1,23 +1,26 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, FieldArray } from 'redux-form'
 
-import InputField from '../form/InputField'
+import GroupedInputField from '../form/GroupedInputField'
+import BookList from './BookList'
 
-let AuthorForm = ({ handleSubmit, pristine, reset, invalid, submitting }) => (
+let AuthorForm = ({ handleSubmit, pristine, reset, invalid, initialValues, submitting }) => (
   <form onSubmit={handleSubmit}>
     <Field name="firstName"
       type="text"
-      component={InputField}
+      component={GroupedInputField}
       label='First Name' />
 
     <Field name="lastName"
       type="text"
-      component={InputField}
+      component={GroupedInputField}
       label='Last Name' />
 
     <Field name="id"
       type="hidden"
       component="input" />
+
+    <FieldArray name="books" authorId={ initialValues && initialValues.id || '' } component={BookList} />
 
     <div>
       <button type="submit"

@@ -1,15 +1,16 @@
 import React from 'react'
+import classNames from 'classnames'
 
-const InputField = ({ input, label, type, meta: { touched, error} }) => (
-  <div className="form-group">
-    <label>{label}</label>
-    <input {...input} type={type}
-      placeholder={label} />
-    {
-      touched && error &&
-      <div className="alert alert-danger">{error}</div>
-    }
-  </div>
+const defaultClassNames = {
+  'form-control': true
+}
+
+const InputField = ({ input, className, type, ...others}) => (
+    <input {...input} 
+      type={type}
+      className={classNames(defaultClassNames, className)}
+      {...others}
+    />
 )
 
 export default InputField
